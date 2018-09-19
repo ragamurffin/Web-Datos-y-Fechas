@@ -24,9 +24,9 @@ public class Main {
 
         get("/hello", (req, res) -> "Hello World");
         
-        get("/aleatorio", (request, response) -> {
+        get("/random", (request, response) -> {
         Random generadorAleatorios = new Random();
-        int numeroAleatorio = 1+generadorAleatorios.nextInt(100);
+        int numeroAleatorio = 1+generadorAleatorios.nextInt(10);
             return   numeroAleatorio;
           
         });
@@ -36,10 +36,18 @@ public class Main {
             return   fecha;
           
         });
+        
+        get("/Fecha", (request, response) -> {
+        java.util.Date fecha = new Date();
+            return   fecha;
+          
+        });
 
 
-        get("/hola/:name", (request, response) -> {
-            return "Hola: " + request.params(":name");
+        get("/Mayuscula/:parametro1/:parametro2", (request, response) -> {
+            String nombre=request.params("parametro1");
+            String nombre2=request.params("parametro2");
+            return "Hola: " + nombre.toUpperCase()+nombre2.toUpperCase();
         });
         path("/tep", () -> {
 
